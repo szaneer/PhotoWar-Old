@@ -11,6 +11,6 @@ target 'PhotoWar' do
   pod 'Firebase/Auth'
   pod 'Firebase/Database'
   pod 'AFNetworking'
-  pod 'MBProgressHUD'
+  pod 'M13ProgressSuite', '~> 1.2'
 
 end

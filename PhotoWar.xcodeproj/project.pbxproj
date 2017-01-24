@@ -26,6 +26,7 @@
 		C74850A61E34BF4C005F7763 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74850A51E34BF4C005F7763 /* User.swift */; };
 		C74850A81E34CC6D005F7763 /* FireViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74850A71E34CC6D005F7763 /* FireViewController.swift */; };
 		C74850AA1E34D1CD005F7763 /* TagsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74850A91E34D1CD005F7763 /* TagsViewController.swift */; };
+		C7C3BB8E1E37C1E900384341 /* FriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C3BB8D1E37C1E900384341 /* FriendViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -68,6 +69,7 @@
 		C74850A51E34BF4C005F7763 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C74850A71E34CC6D005F7763 /* FireViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FireViewController.swift; sourceTree = "<group>"; };
 		C74850A91E34D1CD005F7763 /* TagsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagsViewController.swift; sourceTree = "<group>"; };
+		C7C3BB8D1E37C1E900384341 /* FriendViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +135,7 @@
 				C74850A51E34BF4C005F7763 /* User.swift */,
 				C74850A71E34CC6D005F7763 /* FireViewController.swift */,
 				C74850A91E34D1CD005F7763 /* TagsViewController.swift */,
+				C7C3BB8D1E37C1E900384341 /* FriendViewController.swift */,
 			);
 			path = PhotoWar;
 			sourceTree = "<group>";
@@ -284,6 +287,7 @@
 				C748509E1E34B34A005F7763 /* RegisterViewController.swift in Sources */,
 				C74850AA1E34D1CD005F7763 /* TagsViewController.swift in Sources */,
 				C748509A1E34A78A005F7763 /* LoginViewController.swift in Sources */,
+				C7C3BB8E1E37C1E900384341 /* FriendViewController.swift in Sources */,
 				C748508C1E34775E005F7763 /* RapidAPI.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -9,18 +9,18 @@
 import UIKit
 import RapidAPISDK
 import SwiftyJSON
+import M13ProgressSuite
 
 class FireViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     
     @IBOutlet weak var sendButton: UIButton!
-    var tags: [String?] = []
+    var tags: [String] = []
     
     @IBOutlet weak var attackView: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+                // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -61,7 +61,7 @@ class FireViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         
         photoController.delegate = self
         photoController.allowsEditing = true
-        photoController.sourceType = .photoLibrary
+        photoController.sourceType = .camera
         
         self.present(photoController, animated: true, completion: nil)
 
