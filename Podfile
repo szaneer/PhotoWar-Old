@@ -6,5 +6,11 @@ target 'PhotoWar' do
   use_frameworks!
 
   # Pods for PhotoWar
+  pod ‘SwiftyJSON’
+  pod 'Firebase/Storage'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Database'
+  pod 'AFNetworking'
+  pod 'MBProgressHUD'
 
 end
