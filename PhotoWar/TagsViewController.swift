@@ -11,12 +11,16 @@ import UIKit
 class TagsViewController: UIViewController {
 
     @IBOutlet var tagLabels: [UILabel]!
-    var tags: [String] = []
+    var tags: [String?] = []
     override func viewDidLoad() {
         super.viewDidLoad()
-        var count = -1
-        for tag in tags {
-            tagLabels[0].text?.append(tag)
+        var count = 0
+        for tagLabel in tagLabels {
+            guard let tag = tags[0] else {
+                break
+            }
+            
+            tagLabel.text = tag
         }
         
         // Do any additional setup after loading the view.

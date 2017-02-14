@@ -93,6 +93,20 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		C7463DE71E52E599001C6250 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		C7463DE81E52E5AB001C6250 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		C7484FE51E3352DC005F7763 = {
 			isa = PBXGroup;
 			children = (
@@ -114,6 +128,8 @@
 		C7484FF01E3352DD005F7763 /* PhotoWar */ = {
 			isa = PBXGroup;
 			children = (
+				C7463DE81E52E5AB001C6250 /* Models */,
+				C7463DE71E52E599001C6250 /* Controllers */,
 				C7484FF11E3352DD005F7763 /* AppDelegate.swift */,
 				C7484FF31E3352DD005F7763 /* ViewController.swift */,
 				C7484FF51E3352DD005F7763 /* Main.storyboard */,

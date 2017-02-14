@@ -1,3 +1,4 @@
+
 //
 //  FireViewController.swift
 //  PhotoWar
@@ -16,11 +17,19 @@ class FireViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     @IBOutlet weak var sendButton: UIButton!
     var tags: [String] = []
+    var progress: M13ProgressHUD!
     
     @IBOutlet weak var attackView: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
                 // Do any additional setup after loading the view.
+        progress = M13ProgressHUD(progressView: M13ProgressViewRing.init())
+        progress.progressViewSize = CGSize(width: 60.0, height: 60.0)
+        progress.animationPoint = CGPoint(x: UIScreen.main.bounds.size.width / 2, y: UIScreen.main.bounds.size.height / 2)
+        
+        self.view.addSubview(progress)
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,26 +42,57 @@ class FireViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     func loadTags(image: Data) {
         print("hi")
         //print(image)
+//        let parameters = [
+//            "subscriptionKey": "5bea5ab175934b5985ab3a3ecc083702",
+//            "image": image] as [String : Any]
+//        let test = RapidConnect(projectName: "BoilerMake", andToken: "b8694d62-c8f8-4f95-aa7c-c40049e5e3d8")
+//        test?.callPackage("MicrosoftComputerVision", block: "tagImage", withParameters: parameters, success: { (info) in
+//            //print(info)
+//            let json = info!["payload"] as! String
+//            
+//            let payload = JSON.parse(json)
+//            let tags = payload["tags"].arrayValue
+//            
+//            
+//            for tag in tags {
+//                print(tag)
+//                self.tags.append(tag["name"].stringValue)
+//            }
+//            
+//            self.sendButton.isHidden = false
+//        }, failure: { (error) in
+//            print(error?.localizedDescription)
+//        })
+        progress.setProgress(0.25, animated: true)
         let parameters = [
-            "subscriptionKey": "5bea5ab175934b5985ab3a3ecc083702",
-            "image": image] as [String : Any]
-        let test = RapidConnect(projectName: "BoilerMake", andToken: "b8694d62-c8f8-4f95-aa7c-c40049e5e3d8")
-        test?.callPackage("MicrosoftComputerVision", block: "tagImage", withParameters: parameters, success: { (info) in
-            //print(info)
-            let json = info!["payload"] as! String
-            
-            let payload = JSON.parse(json)
-            let tags = payload["tags"].arrayValue
-            
-            
-            for tag in tags {
-                print(tag)
+            "clientId": "x6YUmBDXYxb0XN1PbFdV89b0_gLWMo0eQ7JP6bKP", "clientSecret" : "_whYkPM5vmmhVM84srPjBeieOTvFhUf5pxTRjlGy", "image": image] as [String : Any]
+        
+        let analyzer = RapidConnect(projectName: "BoilerMake", andToken: "b8694d62-c8f8-4f95-aa7c-c40049e5e3d8")
+        
+        analyzer?.callPackage("ClarifaiPublicModels", block: "analyzeImageGeneral", withParameters: parameters, success: { (info) in
+            //print(info!["payload"])
+            self.progress.setProgress(0.50, animated: true)
+            let payload = info!["payload"] as! [AnyHashable: Any]
+            let outputs = payload["outputs"] as! NSArray
+            let concepts = JSON(outputs[0])
+            let data = concepts["data"]["concepts"].array
+            for x in 0...5 {
+                guard let tag = data?[x] else {
+                    break
+                }
                 self.tags.append(tag["name"].stringValue)
             }
-            
+            self.progress.setProgress(0.75, animated: true)
+            print(self.tags)
             self.sendButton.isHidden = false
+            self.progress.setProgress(1, animated: true)
+            self.progress.dismiss(true)
         }, failure: { (error) in
-            print(error?.localizedDescription)
+            guard let error = error else {
+                return
+            }
+            self.progress.dismiss(true)
+            print(error.localizedDescription)
         })
     }
 
@@ -72,6 +112,9 @@ class FireViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             let data = UIImageJPEGRepresentation(image, 0.8)
             attackView.image = image
             sendButton.isHidden = true
+            progress.setProgress(0, animated: true)
+            progress.show(true)
+            progress.applyBlurToBackground = true
             loadTags(image: data!)
         }
         picker.dismiss(animated: true, completion: nil)
