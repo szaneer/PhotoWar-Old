@@ -12,5 +12,6 @@ target 'PhotoWar' do
   pod 'Firebase/Database'
   pod 'AFNetworking'
   pod 'M13ProgressSuite', '~> 1.2'
+  pod 'Clarifai'
 
 end

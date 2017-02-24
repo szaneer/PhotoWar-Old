@@ -11,7 +11,7 @@ import Firebase
 
 class FriendViewController: UITableViewController {
     
-    var friends: [String] = []
+    var friends: [User] = []
     var friendMap: [String: String] = [:]
     var otherPeopele: [String] = []
     var post = 0
@@ -45,19 +45,12 @@ class FriendViewController: UITableViewController {
             
             for friend in friends {
                 print(friend.value)
-                let name = friend.value as! String
-                self.friends.append(name)
-                self.friendMap[name] = friend.key
+                let user = User(userInfo: friend)
+                self.friends.append(user)
             }
             
             let users = snapshot.children.allObjects as! [FIRDataSnapshot]
             
-            for user in users {
-                let name = user.childSnapshot(forPath: "username").value as! String
-                if self.friendMap[name] == nil {
-                    self.otherPeopele.append(name)
-                }
-            }
             self.tableView.reloadData()
         })
         
@@ -91,7 +84,7 @@ class FriendViewController: UITableViewController {
         if indexPath.section == 1 {
             cell.textLabel?.text = self.otherPeopele[indexPath.row]
         } else {
-            cell.textLabel?.text = self.friends[indexPath.row]
+            cell.textLabel?.text = self.friends[indexPath.row].username
         }
 
         return cell
@@ -143,14 +136,21 @@ class FriendViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "friendSegue" {
+            let vc = segue.destination as! FireViewController
+            let cell = sender as! UITableViewCell
+            let indexPath = tableView.indexPath(for: cell)
+            let user = friends[(indexPath?.row)!]
+            vc.user = user
+        }
     }
-    */
+    
 
 }

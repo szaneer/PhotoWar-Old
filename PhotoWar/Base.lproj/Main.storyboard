@@ -241,6 +241,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="2uy-0h-ZQO" kind="show" identifier="friendSegue" id="gbX-gD-oDg"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <sections/>
@@ -267,7 +270,7 @@
             </objects>
             <point key="canvasLocation" x="1080.8" y="42.728635682158924"/>
         </scene>
-        <!--Title-->
+        <!--Fire View Controller-->
         <scene sceneID="o5Q-CO-kqg">
             <objects>
                 <viewController id="2uy-0h-ZQO" customClass="FireViewController" customModule="PhotoWar" customModuleProvider="target" sceneMemberID="viewController">
@@ -298,7 +301,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="RM1-z8-MRL">
+                    <navigationItem key="navigationItem" id="RM1-z8-MRL">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="vx1-ZN-wwH">
                             <button key="customView" hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="piF-JH-n6p">
                                 <rect key="frame" x="276" y="7" width="83" height="30"/>
@@ -306,6 +309,7 @@
                                 <state key="normal" title="Send"/>
                                 <connections>
                                     <action selector="onSend:" destination="2uy-0h-ZQO" eventType="touchUpInside" id="JW6-PU-p6u"/>
+                                    <segue destination="2tm-li-jZf" kind="presentation" identifier="sendSegue" id="3ND-tc-2AT"/>
                                 </connections>
                             </button>
                         </barButtonItem>
@@ -313,7 +317,6 @@
                     <connections>
                         <outlet property="attackView" destination="tOM-hO-3fh" id="zvd-Ic-dpR"/>
                         <outlet property="sendButton" destination="piF-JH-n6p" id="H7I-9W-gGF"/>
-                        <segue destination="EEv-XB-Acq" kind="presentation" identifier="sendSegue" id="gK2-WG-foT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z1R-ey-pN0" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -321,26 +324,26 @@
             <point key="canvasLocation" x="1916" y="43"/>
         </scene>
         <!--Tags View Controller-->
-        <scene sceneID="sAJ-gc-4gs">
+        <scene sceneID="0fm-LM-Oe0">
             <objects>
-                <viewController id="EEv-XB-Acq" customClass="TagsViewController" customModule="PhotoWar" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="2tm-li-jZf" customClass="TagsViewController" customModule="PhotoWar" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="M9I-fj-AYV"/>
-                        <viewControllerLayoutGuide type="bottom" id="rwg-CA-HHH"/>
+                        <viewControllerLayoutGuide type="top" id="8Ef-xS-4ps"/>
+                        <viewControllerLayoutGuide type="bottom" id="DUq-0L-LfA"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Vhs-bT-wO4">
+                    <view key="view" contentMode="scaleToFill" id="AjV-Ru-fFY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Your image has:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x85-fY-7fi">
-                                <rect key="frame" x="16" y="28" width="343" height="56"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Your image has:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1a2-Ow-WPV">
+                                <rect key="frame" x="16" y="72" width="343" height="56"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="34"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NXO-Me-VrB">
-                                <rect key="frame" x="16" y="112" width="343" height="57"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BLE-fL-qaA">
+                                <rect key="frame" x="16" y="156" width="343" height="57"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <attributedString key="attributedText">
                                     <fragment content="Label">
@@ -352,8 +355,8 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EWY-WI-eNl">
-                                <rect key="frame" x="16" y="229" width="343" height="48"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gKs-AJ-B7S">
+                                <rect key="frame" x="16" y="273" width="343" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <attributedString key="attributedText">
                                     <fragment content="Label">
@@ -365,8 +368,8 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fac-we-mBM">
-                                <rect key="frame" x="16" y="177" width="343" height="44"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tll-Dh-Q6I">
+                                <rect key="frame" x="16" y="221" width="343" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <attributedString key="attributedText">
                                     <fragment content="Label">
@@ -378,8 +381,15 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ygR-ST-sjy">
-                                <rect key="frame" x="16" y="334" width="343" height="26"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gsv-Gs-OPI">
+                                <rect key="frame" x="16" y="329" width="343" height="41"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="35"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lLo-cX-6ti">
+                                <rect key="frame" x="16" y="378" width="343" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <attributedString key="attributedText">
                                     <fragment content="Label">
@@ -391,27 +401,29 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w3t-X4-YVu">
-                                <rect key="frame" x="16" y="285" width="343" height="41"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H10-4f-UIx">
+                                <rect key="frame" x="16" y="457" width="343" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="35"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <state key="normal" title="Finish"/>
+                                <connections>
+                                    <action selector="onFinish:" destination="2tm-li-jZf" eventType="touchUpInside" id="m2a-NZ-U20"/>
+                                    <segue destination="eO0-Dx-jRz" kind="show" identifier="finishSegue" id="bN0-br-BV0"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outletCollection property="tagLabels" destination="NXO-Me-VrB" collectionClass="NSMutableArray" id="bp2-5q-s9l"/>
-                        <outletCollection property="tagLabels" destination="fac-we-mBM" collectionClass="NSMutableArray" id="Ba7-iE-8mV"/>
-                        <outletCollection property="tagLabels" destination="EWY-WI-eNl" collectionClass="NSMutableArray" id="98V-ae-6Mm"/>
-                        <outletCollection property="tagLabels" destination="w3t-X4-YVu" collectionClass="NSMutableArray" id="5NL-kY-cfd"/>
-                        <outletCollection property="tagLabels" destination="ygR-ST-sjy" collectionClass="NSMutableArray" id="fQ6-bh-MgL"/>
+                        <outletCollection property="tagLabels" destination="BLE-fL-qaA" collectionClass="NSMutableArray" id="CTb-jb-rcS"/>
+                        <outletCollection property="tagLabels" destination="tll-Dh-Q6I" collectionClass="NSMutableArray" id="Sof-Wi-tGZ"/>
+                        <outletCollection property="tagLabels" destination="gKs-AJ-B7S" collectionClass="NSMutableArray" id="O0T-zb-6nH"/>
+                        <outletCollection property="tagLabels" destination="Gsv-Gs-OPI" collectionClass="NSMutableArray" id="Bfk-hd-sR2"/>
+                        <outletCollection property="tagLabels" destination="lLo-cX-6ti" collectionClass="NSMutableArray" id="KYw-XV-Nkb"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Qd3-Zs-QTP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="79c-bz-iYx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2624.8000000000002" y="42.728635682158924"/>
+            <point key="canvasLocation" x="2943" y="84"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -461,6 +473,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="mRk-17-T1I"/>
+        <segue reference="bN0-br-BV0"/>
+        <segue reference="gbX-gD-oDg"/>
     </inferredMetricsTieBreakers>
 </document>

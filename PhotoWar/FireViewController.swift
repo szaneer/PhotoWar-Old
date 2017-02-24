@@ -11,6 +11,7 @@ import UIKit
 import RapidAPISDK
 import SwiftyJSON
 import M13ProgressSuite
+import Clarifai
 
 class FireViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -18,6 +19,8 @@ class FireViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     @IBOutlet weak var sendButton: UIButton!
     var tags: [String] = []
     var progress: M13ProgressHUD!
+    var user: User?
+    var app: ClarifaiApp!
     
     @IBOutlet weak var attackView: UIImageView!
     override func viewDidLoad() {
@@ -29,6 +32,7 @@ class FireViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         
         self.view.addSubview(progress)
         
+        app = ClarifaiApp(appID: "x6YUmBDXYxb0XN1PbFdV89b0_gLWMo0eQ7JP6bKP", appSecret: "_whYkPM5vmmhVM84srPjBeieOTvFhUf5pxTRjlGy")
         
     }
 
@@ -42,6 +46,7 @@ class FireViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     func loadTags(image: Data) {
         print("hi")
         //print(image)
+        // Microsoft cognitive recognition
 //        let parameters = [
 //            "subscriptionKey": "5bea5ab175934b5985ab3a3ecc083702",
 //            "image": image] as [String : Any]
@@ -63,13 +68,14 @@ class FireViewController: UIViewController, UIImagePickerControllerDelegate, UIN
 //        }, failure: { (error) in
 //            print(error?.localizedDescription)
 //        })
+        
         progress.setProgress(0.25, animated: true)
         let parameters = [
             "clientId": "x6YUmBDXYxb0XN1PbFdV89b0_gLWMo0eQ7JP6bKP", "clientSecret" : "_whYkPM5vmmhVM84srPjBeieOTvFhUf5pxTRjlGy", "image": image] as [String : Any]
         
         let analyzer = RapidConnect(projectName: "BoilerMake", andToken: "b8694d62-c8f8-4f95-aa7c-c40049e5e3d8")
         
-        analyzer?.callPackage("ClarifaiPublicModels", block: "analyzeImageGeneral", withParameters: parameters, success: { (info) in
+        analyzer!.callPackage("ClarifaiPublicModels", block: "analyzeImageGeneral", withParameters: parameters, success: { (info) in
             //print(info!["payload"])
             self.progress.setProgress(0.50, animated: true)
             let payload = info!["payload"] as! [AnyHashable: Any]
@@ -83,10 +89,13 @@ class FireViewController: UIViewController, UIImagePickerControllerDelegate, UIN
                 self.tags.append(tag["name"].stringValue)
             }
             self.progress.setProgress(0.75, animated: true)
-            print(self.tags)
-            self.sendButton.isHidden = false
-            self.progress.setProgress(1, animated: true)
-            self.progress.dismiss(true)
+            DispatchQueue.main.async {
+                
+                print(self.tags)
+                self.sendButton.isHidden = false
+                self.progress.setProgress(1, animated: true)
+                self.progress.dismiss(true)
+            }
         }, failure: { (error) in
             guard let error = error else {
                 return
@@ -94,6 +103,9 @@ class FireViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             self.progress.dismiss(true)
             print(error.localizedDescription)
         })
+        
+        
+        
     }
 
     @IBAction func onFire(_ sender: Any) {
@@ -132,9 +144,16 @@ class FireViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        let vc = segue.destination as! TagsViewController
-        print(self.tags)
-        vc.tags = self.tags
+        if segue.identifier == "sendSegue" {
+            let vc = segue.destination as! TagsViewController
+            vc.tags = self.tags
+            guard let user = user else {
+                return
+            }
+            
+            vc.user = user
+        }
+        
     }
     
 

@@ -7,7 +7,15 @@
 //
 
 import UIKit
+import Firebase
 
 class User: NSObject {
+    let username: String!
+    let uid: String!
 
+    init(userInfo: FIRDataSnapshot) {
+        username = userInfo.value! as! String
+        uid = userInfo.key
+        
+    }
 }
