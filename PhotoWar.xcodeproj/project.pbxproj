@@ -142,6 +142,7 @@
 		C7484FF01E3352DD005F7763 /* PhotoWar */ = {
 			isa = PBXGroup;
 			children = (
+				C77223BA1E751260007E8870 /* Other */,
 				C7463DE91E52EF50001C6250 /* RapidAPI */,
 				C7463DE81E52E5AB001C6250 /* Models */,
 				C7463DE71E52E599001C6250 /* Controllers */,
@@ -150,18 +151,25 @@
 				C7484FF51E3352DD005F7763 /* Main.storyboard */,
 				C7484FF81E3352DD005F7763 /* Assets.xcassets */,
 				C7484FFA1E3352DD005F7763 /* LaunchScreen.storyboard */,
-				C74850921E347D76005F7763 /* RapidAPISDK.framework */,
-				C74850891E34775E005F7763 /* RapidAPI.h */,
-				C748508A1E34775E005F7763 /* RapidAPI.m */,
-				C748508B1E34775E005F7763 /* RapidAPISDK.h */,
 				C7484FFD1E3352DD005F7763 /* Info.plist */,
-				C748508F1E347BFA005F7763 /* OCViewController.h */,
 				C74850971E34896F005F7763 /* test.jpg */,
-				C74850901E347BFA005F7763 /* OCViewController.m */,
 				C748509B1E34A86C005F7763 /* main.MOV */,
 				C74850A31E34BC02005F7763 /* GoogleService-Info.plist */,
 			);
 			path = PhotoWar;
+			sourceTree = "<group>";
+		};
+		C77223BA1E751260007E8870 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				C74850921E347D76005F7763 /* RapidAPISDK.framework */,
+				C74850891E34775E005F7763 /* RapidAPI.h */,
+				C748508A1E34775E005F7763 /* RapidAPI.m */,
+				C748508B1E34775E005F7763 /* RapidAPISDK.h */,
+				C748508F1E347BFA005F7763 /* OCViewController.h */,
+				C74850901E347BFA005F7763 /* OCViewController.m */,
+			);
+			name = Other;
 			sourceTree = "<group>";
 		};
 		FCB4740CFF1B43ED30A615B7 /* Pods */ = {
